@@ -1,32 +1,17 @@
-pipeline {
-    agent any
+node {
 
-    stages {
-        stage('Build') {
-            steps {
-                bat 'javac Hello.java'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                bat 'java Hello'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy stage completed successfully.'
-            }
-        }
+    stage('Checkout') {
+        echo 'Checking out source code...'
+        checkout scm
     }
 
-    post {
-        success {
-            echo 'Pipeline executed successfully.'
-        }
-        failure {
-            echo 'Pipeline execution failed.'
-        }
+    stage('Build') {
+        echo 'Installing dependencies...'
+        bat 'npm install'
+
+        echo 'Running Build...'
+        bat 'npm run build'
     }
+
+    echo 'Pipeline completed successfully.'
 }

@@ -1,0 +1,10 @@
+{
+  "name": "jenkins-cicd-demo",
+  "version": "1.0.0",
+  "description": "Node.js CI/CD Demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo Building Node.js Project...",
+    "start": "node index.js"
+  }
+}
